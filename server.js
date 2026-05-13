@@ -42,13 +42,16 @@ async function createRound(type,time,period){
     time:Date.now()
   });
 
-  await db.collection("gameStatus")
-  .doc(type)
-  .set({
-    period:String(period),
-    timer:time,
-    result:num
-  });
+  await db.collection("gameRooms")
+.doc(type)
+.set({
+  period:String(period),
+  timer:time,
+  result:num,
+  color:color,
+  bs:bs,
+  status:"RUNNING"
+});
 
   console.log(type,num);
 }
